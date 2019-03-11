@@ -10,7 +10,11 @@ class PokemonList extends React.Component {
                 <p>Loading</p>
             )
         }
-        else {
+        else if (pokemonsData.length == 0) {
+            return (
+                <h2>No hay resultados</h2>
+            )
+        } else {
            
             return (
                 <section className='pokemonList__section'>
