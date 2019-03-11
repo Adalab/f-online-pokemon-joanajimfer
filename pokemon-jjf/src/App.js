@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import {pokemonsAPICall} from './services/pokemonAPI';
+import PokemonList from './components/PokemonList';
 
-const pokemonENDPOINT = 'https://pokeapi.co/api/v2/pokemon?limit=25';
+
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.pokemonFetch()
+  }
+
+  pokemonFetch() {
     pokemonsAPICall()
       .then(data => {
         const pokemonToSearch = data.results;
@@ -33,9 +38,6 @@ class App extends Component {
       })
   }
 
- 
-
-
   render() {
     return (
       <div className="App">
@@ -49,27 +51,7 @@ class App extends Component {
               <button>Search...</button>
             </form>
           </div>
-          <section>
-            <h2>Pokemon encontrados:</h2>
-         <ul>
-             {this.state.pokemonsData.map((pokemon, id) => {
-               return (
-                 <li key={id}>
-                 <h3>{pokemon.name}</h3>
-                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                 <p>ID / {pokemon.id}</p>
-                 <ul>{pokemon.types.map((type, id) => {
-                  return(
-                     <li key={id}>{type.type.name}</li>
-                   
-                 )})}
-                 </ul>
-                 </li>
-                 
-               )
-             })}
-           </ul> 
-          </section>
+         <PokemonList pokemonsData={this.state.pokemonsData} />
         </main>
       </div>
     );
