@@ -51,7 +51,7 @@ class App extends Component {
               <button>Search...</button>
             </form>
           </div>
-         <PokemonList pokemonsData={this.state.pokemonsData} />
+         <PokemonList pokemonsData={this.state.pokemonsData} fetchingState={this.state.isFetching} />
         </main>
       </div>
     );

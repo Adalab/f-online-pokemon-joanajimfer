@@ -2,6 +2,12 @@ import React from 'react';
 
 class PokemonList extends React.Component {
     render() {
+        console.log('props', this.props)
+        if(this.props.fetchingState === true) {
+            return (
+                <p>Loading</p>
+            )
+        } else {
         return (
             <section>
             <h2>Pokemon encontrados:</h2>
@@ -24,7 +30,7 @@ class PokemonList extends React.Component {
              })}
            </ul> 
           </section>
-        )
+        )}
     }
 }
 
