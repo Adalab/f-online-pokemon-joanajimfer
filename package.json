@@ -2,6 +2,7 @@
   "name": "pokemon-jjf",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://myname.github.io/myapp",
   "dependencies": {
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
