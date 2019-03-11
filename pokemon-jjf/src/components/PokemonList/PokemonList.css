@@ -24,7 +24,6 @@
     background-color: #E7E7E6;
     margin: 0px;
     padding: 10px;
-    color: #CC0000;
 }
 .pokemonList__img {
     width: 130px;
@@ -33,6 +32,7 @@
     display: flex;
     background-color: #E7E7E6;
     border-radius: 0px 0px 22px 22px;
+    justify-content: space-between;
 }
 .pokemonList__data--number {
     margin: 15px;
@@ -42,4 +42,13 @@
     list-style: none;
     display: flex;
     margin: 15px;
+    padding-left: 60px;
+}
+.pokemonList__data--types span {
+    font-size: 23px;
+    border: 1px solid red;
+    border-radius: 25px;
+    padding: 3px;
+    margin-left: 8px;
+    background-color: red;
 }

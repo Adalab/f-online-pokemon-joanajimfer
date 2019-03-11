@@ -11,6 +11,7 @@ class PokemonList extends React.Component {
             )
         }
         else {
+           
             return (
                 <section className='pokemonList__section'>
                     <ul className='pokemonList__list'>
@@ -22,8 +23,37 @@ class PokemonList extends React.Component {
                                     <div className='pokemonList__data'>
                                     <p className='pokemonList__data--number'># {pokemon.id}</p>
                                     <ul className='pokemonList__data--types'>{pokemon.types.map((type, id) => {
+                                        switch (type.type.name) {
+                                            case 'poison':
+                                            this.icon = <span role="img" aria-label="skull" className='data__types--icon'>☠️</span>;
+                                            break;
+                                            case 'fire':
+                                            this.icon = <span role="img" aria-label="fire">🔥</span>;
+                                            break;
+                                            case 'grass':
+                                            this.icon = <span role="img" aria-label="plant">🌿</span>;
+                                            break;
+                                            case 'flying':
+                                            this.icon = <span role="img" aria-label="fly">🦅</span>;
+                                            break;
+                                            case 'water':
+                                            this.icon = <span role="img" aria-label="water">🌊</span>;
+                                            break;
+                                            case 'bug':
+                                            this.icon = <span role="img" aria-label="bug">🐛</span>;
+                                            break;
+                                            case 'normal':
+                                            this.icon = <span role="img" aria-label="normal">🐀</span>;
+                                            break;
+                                            case 'electric':
+                                            this.icon = <span role="img" aria-label="electric">⚡</span>;
+                                            break;
+                                            default: 
+                                            this.icon = type.type.name;
+                                        }
+                                         
                                         return (
-                                            <li key={id}>{type.type.name}</li>
+                                            <li key={id}>{this.icon}</li>
                                         )
                                     })}
                                     </ul>
