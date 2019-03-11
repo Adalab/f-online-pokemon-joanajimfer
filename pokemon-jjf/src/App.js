@@ -10,7 +10,8 @@ class App extends Component {
     this.state = {
       pokemonsData: localStorage.getItem('Pokemon'),
       isFetching: true, 
-      userQuery: ''
+      userQuery: '',
+      filterPokemons: ''
     }
     this.handleSearchInput = this.handleSearchInput.bind(this);
   }
@@ -48,18 +49,16 @@ class App extends Component {
 
   //Save the user input value in the state 
   handleSearchInput(e) {
-    const userSearch = e.target.value;
+    const userSearch = e.currentTarget.value;
     this.setState ({
       userQuery: userSearch
     })
-    
-    this.filteredPokemons();
-    const newArray = this.filteredPokemons();
-    console.log(newArray);
-    
+   
   }
 
+  //Filter function based on user seacrh
   filteredPokemons() {
+    if(this.state.isFetching === false) {
     const {pokemonsData, userQuery} = this.state;
     const filteredPokemons = pokemonsData.filter((pokemon) => {
       if(pokemon.name.toLowerCase().includes(userQuery.toLowerCase())){
@@ -69,14 +68,18 @@ class App extends Component {
       }
     })
     return filteredPokemons;
-   
-  }
+  } else {
+    return (
+      <p>Loading...</p>
+    )}}
 
  
   
 
   render() {
-    
+    const newArray = this.filteredPokemons();
+    console.log(newArray)
+   
     return (
       <div className="App">
         <header>
@@ -89,7 +92,7 @@ class App extends Component {
              
             </form>
           </div>
-         <PokemonList pokemonsData={this.state.pokemonsData} fetchingState={this.state.isFetching} />
+         <PokemonList pokemonsData={newArray} fetchingState={this.state.isFetching} />
         </main>
       </div>
     );
